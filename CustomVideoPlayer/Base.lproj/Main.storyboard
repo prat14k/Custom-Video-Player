@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,29 +16,93 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomVideoPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eET-QL-v6U">
-                                <rect key="frame" x="0.0" y="204" width="320" height="180"/>
+                                <rect key="frame" x="0.0" y="261.66666666666669" width="414" height="232.66666666666669"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.3809396404109589" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eET-QL-v6U" secondAttribute="height" multiplier="16:9" id="eOa-y8-zQV"/>
                                 </constraints>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-0W-gaW">
+                                <rect key="frame" x="0.0" y="691" width="414" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="yDT-VY-OvJ"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="bmy-sw-MoI">
+                                        <color key="tintColor" red="0.018019697082732079" green="0.19459866751269039" blue="0.082037199037346423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="rewindAction:" destination="BYZ-38-t0r" id="hFF-Ag-bWf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Meb-P4-Qe2"/>
+                                    <barButtonItem title="▶︎" id="h6O-Nn-Be6">
+                                        <color key="tintColor" red="0.018019697082732079" green="0.19459866751269039" blue="0.082037199037346423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="playPauseAction:" destination="BYZ-38-t0r" id="7ot-mO-OWS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RTU-4P-D92"/>
+                                    <barButtonItem systemItem="fastForward" id="WJB-XZ-5uH">
+                                        <color key="tintColor" red="0.018019697082732079" green="0.19459866751269039" blue="0.082037199037346423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="fastForwardAction:" destination="BYZ-38-t0r" id="grJ-Gw-pc9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="1" green="0.90980392156862744" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZV3-gL-eUz">
+                                <rect key="frame" x="0.0" y="-80" width="414" height="145"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9R-uy-Nvp">
+                                        <rect key="frame" x="361" y="114.33333333333334" width="39" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JT7-eo-J6O">
+                                        <rect key="frame" x="12" y="107.66666666666667" width="339" height="31.000000000000014"/>
+                                        <connections>
+                                            <action selector="slideToSeekPosition:" destination="BYZ-38-t0r" eventType="valueChanged" id="epN-7q-WnX"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.90980392156862744" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="JT7-eo-J6O" firstAttribute="centerY" secondItem="ZV3-gL-eUz" secondAttribute="centerY" constant="50" id="6Dx-62-ctm"/>
+                                    <constraint firstItem="O9R-uy-Nvp" firstAttribute="leading" secondItem="JT7-eo-J6O" secondAttribute="trailing" constant="12" id="9Ys-mk-5sn"/>
+                                    <constraint firstAttribute="height" constant="145" id="FYF-FT-Cql"/>
+                                    <constraint firstItem="JT7-eo-J6O" firstAttribute="leading" secondItem="ZV3-gL-eUz" secondAttribute="leading" constant="14" id="RJc-H2-9Bb"/>
+                                    <constraint firstItem="O9R-uy-Nvp" firstAttribute="centerY" secondItem="JT7-eo-J6O" secondAttribute="centerY" id="Vhi-ku-iAS"/>
+                                    <constraint firstAttribute="trailing" secondItem="O9R-uy-Nvp" secondAttribute="trailing" constant="14" id="dbH-Ho-XrU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90226443527918776" green="0.90226443527918776" blue="0.90226443527918776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="eET-QL-v6U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BE7-BB-Z2U"/>
+                            <constraint firstItem="eET-QL-v6U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZV3-gL-eUz" secondAttribute="bottom" id="BE7-BB-Z2U"/>
                             <constraint firstAttribute="trailing" secondItem="eET-QL-v6U" secondAttribute="trailing" priority="999" id="FMH-a4-8Dk"/>
+                            <constraint firstItem="bf1-0W-gaW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="J0O-Fr-MmN"/>
                             <constraint firstItem="eET-QL-v6U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jqt-LJ-rHT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eET-QL-v6U" secondAttribute="bottom" id="jQS-hG-r6m"/>
+                            <constraint firstItem="ZV3-gL-eUz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-100" id="T7L-k1-uew"/>
+                            <constraint firstItem="bf1-0W-gaW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tu7-2s-NXS"/>
+                            <constraint firstItem="ZV3-gL-eUz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="avl-Iz-iTv"/>
+                            <constraint firstItem="bf1-0W-gaW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cR2-ey-JoY"/>
+                            <constraint firstItem="bf1-0W-gaW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eET-QL-v6U" secondAttribute="bottom" id="jQS-hG-r6m"/>
                             <constraint firstItem="eET-QL-v6U" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="oh2-ts-bJL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZV3-gL-eUz" secondAttribute="trailing" id="x5Q-1r-Ma0"/>
                             <constraint firstItem="eET-QL-v6U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" id="xVZ-T4-oAz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="durationLabel" destination="O9R-uy-Nvp" id="vZW-Pa-u4a"/>
+                        <outlet property="durationSlider" destination="JT7-eo-J6O" id="9GZ-d0-0NY"/>
+                        <outlet property="videoPlayPauseBarBtn" destination="h6O-Nn-Be6" id="j3a-IH-jVt"/>
                         <outlet property="videoPlayerView" destination="eET-QL-v6U" id="WxQ-NI-pXs"/>
                     </connections>
                 </viewController>
